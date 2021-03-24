@@ -32,6 +32,8 @@ async def on_message(message):
 	if m.group(0) not in data['emotes']:
 		data['emotes'][m.group(0)] = 0
 	data['emotes'][m.group(0)] += 1
+	with open('emotes.json', 'w') as f:
+		json.dump(data, f)
 
     
 
