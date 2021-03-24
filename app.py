@@ -1,6 +1,8 @@
-import os, json
+import os, json, sys
 from flask import Flask
 
+
+port = sys.argv[1]
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,4 +12,4 @@ def index():
     return 'Failed'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=port)
