@@ -1,5 +1,5 @@
 import os, json, sys
-from flask import Flask
+from flask import Flask, render_template
 import psycopg2
 postgres = 'postgres://lkqrjjtnsmdaor:ed80e278bbaf164b2f53b7f2c9173c448313ca793b7c57ec1bb0a9ec2d53bbc6@ec2-54-205-183-19.compute-1.amazonaws.com:5432/dc3lcj8g41q7p2'
 
