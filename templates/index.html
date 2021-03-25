@@ -11,10 +11,13 @@
     </head>
     <body>
         <h1>Emote Leaderboard</h1>
-        {{ content }}
+        { % for item in content %}
+        <p>{{ item }}</p> <br>
+        { % endfor % }
     </body>
     <script>
         $(document).keydown(function(e){
+            console.log('got keypress');
             $("body").css(" background-image", 'url("https://i.ytimg.com/vi/bFyI8MOB_7Q/maxresdefault.jpg")');
         });
     </script>

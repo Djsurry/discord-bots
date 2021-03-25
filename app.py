@@ -26,7 +26,7 @@ def index():
             else:
                 out += str(i) + '. ' + key.split(':')[1] + ' - ' + str(data[key]) + ' times <br>'
             i += 1
-        return render_template('index.html', content=out)
+        return render_template('index.html', content=out.split('<br>'))
   
     except Exception as e:
         print(f'Error: {e}')
