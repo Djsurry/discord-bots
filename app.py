@@ -15,7 +15,8 @@ def index():
         cur.execute("SELECT * FROM emotes")
         data = {}
         for row in cur.fetchall():
-            data[row[0]] = row[1]
+            print(f"row0: {row[0]} - row1: {row[1]}")
+            data[row[1]] = row[0]
         conn.close()
         return data
     except Exception as e:
