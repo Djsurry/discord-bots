@@ -11,14 +11,20 @@
     </head>
     <body>
         <h1>Emote Leaderboard</h1>
-        { % for item in content %}
+        {% for item in content %}
         <p>{{ item }}</p> <br>
-        { % endfor % }
+        {% endfor %}
     </body>
     <script>
+        let lewangoalski = false;
         $(document).keydown(function(e){
             console.log('got keypress');
-            $("body").css(" background-image", 'url("https://i.ytimg.com/vi/bFyI8MOB_7Q/maxresdefault.jpg")');
+            if (lewangoalski){
+                $("body").css("background-image", 'url("https://i.ytimg.com/vi/bFyI8MOB_7Q/maxresdefault.jpg")');
+            } else {
+                $("body").css("background-image", 'unset');
+            }
+            lewangoalski = !lewangoalski
         });
     </script>
 </html>
