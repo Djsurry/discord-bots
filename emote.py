@@ -32,7 +32,7 @@ async def on_reaction_add(reaction, user):
 @client.event
 async def on_message(message):
 	print(f'Got message: {message.content}')
-	for emote in re.findall(pattern, s):
+	for emote in re.findall(pattern, message):
 		if emote not in data['emotes']:
 			print(f'Adding {emote} to dictionary')
 			data['emotes'][emote] = 0
