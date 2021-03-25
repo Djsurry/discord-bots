@@ -12,6 +12,7 @@ def insert(emote):
 	conn = psycopg2.connect(postgres, sslmode='require')
 	cur = conn.cursor()
 	cur.execute("INSERT INTO emotes (emote, uses) VALUES (%s, %s);", (emote, 1))
+	conn.commit()
 	cur.close()
 	conn.close()
 
@@ -21,6 +22,7 @@ def add(emote):
 	cur.execute("SELECT uses FROM emotes WHERE emote = %s;", (emote,))
 	uses = cur.fetchone()[0]
 	cur.execute("UPDATE emotes SET uses = %s WHERE emote = %s;", (uses + 1, emote))
+	conn.commit()
 	cur.close()
 	conn.close()
 
