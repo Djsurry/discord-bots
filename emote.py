@@ -65,6 +65,7 @@ async def on_reaction_add(reaction, user):
 async def on_message(message):
 	print(f'Got message: {message.content}')
 	for emote in re.findall(pattern, message.content):
+		print(emote)
 		if exists(emote):
 			print(f'Adding 1 to {emote}')
 			add(emote)
