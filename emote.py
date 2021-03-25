@@ -26,7 +26,7 @@ def insert(emote):
 def add(emote):
 	conn = psycopg2.connect(postgres, sslmode='require')
 	cur = conn.cursor()
-	cur.execute("SELECT uses FROM test WHERE emote = %s;", emote)
+	cur.execute("SELECT uses FROM test WHERE emote = %s;", (emote,))
 	uses = cur.fetchone()[0]
 	cur.execute("UPDATE test SET uses = %s WHERE emote = %s;", (uses + 1, emote))
 	cur.close()
@@ -35,7 +35,7 @@ def add(emote):
 def exists(emote):
 	conn = psycopg2.connect(postgres, sslmode='require')
 	cur = conn.cursor()
-	cur.execute("SELECT * FROM test WHERE emote = %s;", emote)
+	cur.execute("SELECT * FROM test WHERE emote = %s;", (emote,))
 	if cur.fetchone() is None:
 		cur.close()
 		conn.close()
