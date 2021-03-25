@@ -3,6 +3,7 @@ from flask import Flask
 import psycopg2
 postgres = 'postgres://lkqrjjtnsmdaor:ed80e278bbaf164b2f53b7f2c9173c448313ca793b7c57ec1bb0a9ec2d53bbc6@ec2-54-205-183-19.compute-1.amazonaws.com:5432/dc3lcj8g41q7p2'
 
+style = 
 
 port = sys.argv[1]
 app = Flask(__name__)
@@ -26,7 +27,8 @@ def index():
             else:
                 out += str(i) + '. ' + key.split(':')[1] + ' - ' + str(data[key]) + ' times <br>'
             i += 1
-        return '<h1>Emote Leaderboard</h1>\n\n' + out
+        return render_template('index.html', content=out)
+  
     except Exception as e:
         print(f'Error: {e}')
         return "failed"
