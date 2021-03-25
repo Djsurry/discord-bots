@@ -9,18 +9,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    try:
-        conn = psycopg2.connect(postgres, sslmode='require')
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM emotes")
-        data = {}
-        for row in cur.fetchall():
-            data[row[0]] = data[row[1]]
-        conn.close()
-        return data
-    except Exception as e:
-        print(f'Error: {e}')
-        return "failed"
+    # try:
+    conn = psycopg2.connect(postgres, sslmode='require')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM emotes")
+    data = {}
+    for row in cur.fetchall():
+        data[row[0]] = data[row[1]]
+    conn.close()
+    return data
+    # except Exception as e:
+    #     print(f'Error: {e}')
+    #     return "failed"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
