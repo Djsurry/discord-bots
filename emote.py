@@ -7,14 +7,6 @@ postgres = 'postgres://lkqrjjtnsmdaor:ed80e278bbaf164b2f53b7f2c9173c448313ca793b
 pattern = re.compile(r"(<:.+:\d+>)")
 client = discord.Client()
 
-with open('emotes.json') as f:
-	data = json.load(f)
-
-conn = psycopg2.connect(postgres, sslmode='require')
-cur = conn.cursor()
-cur.execute("CREATE TABLE test (id serial PRIMARY KEY, emote text, uses smallint);")
-cur.close()
-conn.close()
 
 def insert(emote):
 	conn = psycopg2.connect(postgres, sslmode='require')
