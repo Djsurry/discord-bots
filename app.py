@@ -26,7 +26,7 @@ def index():
             else:
                 out += str(i) + '. ' + key.split(':')[1] + ' - ' + str(data[key]) + ' times! <br>'
             i += 1
-        return '<style>body { background-image: url("https://i.ytimg.com/vi/bFyI8MOB_7Q/maxresdefault.jpg"); background-color: #cccccc;]</style>\n\n' + out
+        return out
     except Exception as e:
         print(f'Error: {e}')
         return "failed"
