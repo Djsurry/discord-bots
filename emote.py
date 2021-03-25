@@ -62,7 +62,7 @@ async def on_reaction_add(reaction, user):
 				gulags += 1
 		if gulags > 5 and message.author.id != 242030668228460555:
 			await message.author.add_roles(discord.Object(550485684129890336))
-            await message.author.remove_roles(discord.Object(482339033717145620))
+			await message.author.remove_roles(discord.Object(482339033717145620))
 
 
 @client.event
