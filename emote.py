@@ -4,7 +4,7 @@ import psycopg2
 
 TOKEN = 'ODE1MTM3Mzk5MTU1NzIwMTky.YDoB3A._IASkIm8_bBtt6FSe38oDCVYR0k'
 postgres = 'postgres://lkqrjjtnsmdaor:ed80e278bbaf164b2f53b7f2c9173c448313ca793b7c57ec1bb0a9ec2d53bbc6@ec2-54-205-183-19.compute-1.amazonaws.com:5432/dc3lcj8g41q7p2'
-pattern = re.compile(r"(<:.+:\d{15,20}>)")
+pattern = re.compile(r"(<:[^:]+:\d+>)")
 client = discord.Client()
 
 
