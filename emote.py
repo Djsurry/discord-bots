@@ -46,13 +46,13 @@ async def on_ready():
     
 @client.event
 async def on_reaction_add(reaction, user):
-	print(f'Got reaction: {reaction.emoji}')
-	if exists(reaction.emoji):
-		print(f'Adding 1 to {reaction.emoji}')
-		add(reaction.emoji)
+	print(f'Got reaction: {reaction.emoji.name}')
+	if exists(reaction.emoji.name):
+		print(f'Adding 1 to {reaction.emoji.name}')
+		add(reaction.emoji.name)
 	else:
-		print(f'Adding {reaction.emoji} to db')
-		insert(reaction.emoji)
+		print(f'Adding {reaction.emoji.name} to db')
+		insert(reaction.emoji.name)
 
 
 @client.event
