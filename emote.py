@@ -61,7 +61,7 @@ async def on_reaction_add(reaction, user):
 		for r in message.reactions:
 			if str(reaction.emoji) == "<:Gulag:815302593348632626>":
 				gulags += 1
-		if gulags > 5 and message.author.id != 242030668228460555:
+		if gulags > 4 and message.author.id != 242030668228460555:
 			await message.author.add_roles(discord.Object(550485684129890336))
 			await message.author.remove_roles(discord.Object(482339033717145620))
 
