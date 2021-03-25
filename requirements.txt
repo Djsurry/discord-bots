@@ -1,3 +1,4 @@
 discord
 flask
 psycopg2-binary
+asyncio

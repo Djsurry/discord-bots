@@ -1,4 +1,4 @@
-import discord, time, datetime, re
+import discord, time, datetime, re, asyncio
 import json
 import psycopg2
 
@@ -53,6 +53,15 @@ async def on_reaction_add(reaction, user):
 	else:
 		print(f'Adding {str(reaction.emoji)} to db')
 		insert(str(reaction.emoji))
+
+	if str(reaction.emoji) == "<:Gulag:815302593348632626>":
+		message = reaction.message
+		gulags = 0
+		for r in message.reactions:
+			if str(reaction.emoji) == "<:Gulag:815302593348632626>":
+				gulags += 1
+		if gulags > 0:
+			asyncio.run(message.author.add_roles(discord.Object(550485684129890336))
 
 
 @client.event
