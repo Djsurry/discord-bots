@@ -39,8 +39,8 @@ async def on_message(message):
 		print(f'Adding 1 to {emote}')
 		data['emotes'][emote] += 1
 
-	with open('emotes.json', 'w') as f:
-		json.dump(data, f)
+		with open('emotes.json', 'w') as f:
+			json.dump(data, f)
 
     
 
