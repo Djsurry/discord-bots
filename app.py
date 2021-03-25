@@ -12,6 +12,7 @@ def index():
     try:
         conn = psycopg2.connect(postgres, sslmode='require')
         cur = conn.cursor()
+        cur.execute("SELECT * FROM emotes")
         data = {}
         for row in cur.fetchall():
             data[row[0]] = data[row[1]]
