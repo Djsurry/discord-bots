@@ -21,6 +21,8 @@ def index():
         out = ''
         i = 1
         for key in keys:
+            if data[key] == 1:
+                out += str(i) + '. ' + key + ' - ' + str(data[key]) + ' time! <br>'
             out += str(i) + '. ' + key + ' - ' + str(data[key]) + ' times! <br>'
             i += 1
         return out
