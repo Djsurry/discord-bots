@@ -11,7 +11,7 @@ client = discord.Client()
 def insert(emote):
 	conn = psycopg2.connect(postgres, sslmode='require')
 	cur = conn.cursor()
-	cur.execute("INSERT INTO emotes (emote, uses) (%s, %s);", (emote, 1))
+	cur.execute("INSERT INTO emotes (%s, %s);", (emote, 1))
 	cur.close()
 	conn.close()
 
