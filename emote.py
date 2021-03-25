@@ -12,7 +12,7 @@ with open('emotes.json') as f:
 
 conn = psycopg2.connect(postgres, sslmode='require')
 cur = conn.cursor()
-cur.execute("CREATE TABLE test (id serial PRIMARY KEY, data emote, num uses);")
+cur.execute("CREATE TABLE test (id serial PRIMARY KEY, emote text, uses smallint);")
 cur.close()
 conn.close()
 
