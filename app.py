@@ -17,7 +17,13 @@ def index():
         for row in cur.fetchall():
             data[row[1]] = row[2]
         conn.close()
-        return data
+        keys = sorted(data.keys(), key = lambda x : data[x], reverse = True)
+        out = ''
+        i = 1
+        for key in keys:
+            out += str(i) + '. ' key + ' - ' + str(data[key]) + ' times! <br>'
+            i += 1
+        return out
     except Exception as e:
         print(f'Error: {e}')
         return "failed"
