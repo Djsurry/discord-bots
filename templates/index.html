@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="">
     <style>
+        p {
+            margin: 0px;
+        }
     </style>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,7 +22,7 @@
         let lewangoalski = false;
         $(document).keydown(function(e){
             console.log('got keypress');
-            if (lewangoalski){
+            if (!lewangoalski){
                 $("body").css("background-image", 'url("https://i.ytimg.com/vi/bFyI8MOB_7Q/maxresdefault.jpg")');
             } else {
                 $("body").css("background-image", 'unset');
