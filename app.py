@@ -22,8 +22,8 @@ def index():
         i = 1
         for key in keys:
             if data[key] == 1:
-                out += str(i) + '. ' + key + ' - ' + str(data[key]) + ' time! <br>'
-            out += str(i) + '. ' + key + ' - ' + str(data[key]) + ' times! <br>'
+                out += str(i) + '. ' + key.split(':')[1] + ' - ' + str(data[key]) + ' time! <br>'
+            out += str(i) + '. ' + key.split(':')[1] + ' - ' + str(data[key]) + ' times! <br>'
             i += 1
         return out
     except Exception as e:
