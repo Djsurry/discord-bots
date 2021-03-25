@@ -18,7 +18,8 @@ def index():
             data[row[0]] = data[row[1]]
         conn.close()
         return data
-    except:
+    except Exception as e:
+        print(e)
         return "failed"
 
 if __name__ == '__main__':
