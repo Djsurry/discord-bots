@@ -5,7 +5,7 @@ import json
 
 TOKEN = 'ODE1MTM3Mzk5MTU1NzIwMTky.YDoB3A._IASkIm8_bBtt6FSe38oDCVYR0k'
 
-pattern = re.compile(r"<:.+:\d+>")
+pattern = re.compile(r"(<:.+:\d+>)")
 client = discord.Client()
 
 with open('emotes.json') as f:
@@ -21,17 +21,24 @@ async def on_ready():
 async def on_reaction_add(reaction, user):
 	print(f'Got reaction: {reaction.emoji}')
 	if reaction.emoji not in data['emotes']:
+		print(f'Adding {emote} to dictionary')
 		data['emotes'][reaction.emoji] = 0
+	print(f'Adding 1 to {emote}')
 	data['emotes'][reaction.emoji] += 1
+	with open('emotes.json', 'w') as f:
+		json.dump(data, f)
+
+
 @client.event
 async def on_message(message):
 	print(f'Got message: {message.content}')
-	m = pattern.search(message.content)
-	if not m:
-		return
-	if m.group(0) not in data['emotes']:
-		data['emotes'][m.group(0)] = 0
-	data['emotes'][m.group(0)] += 1
+	for emote in re.findall(pattern, s):
+		if emote not in data['emotes']:
+			print(f'Adding {emote} to dictionary')
+			data['emotes'][emote] = 0
+		print(f'Adding 1 to {emote}')
+		data['emotes'][emote] += 1
+
 	with open('emotes.json', 'w') as f:
 		json.dump(data, f)
 
