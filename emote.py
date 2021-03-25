@@ -56,6 +56,7 @@ async def on_reaction_add(reaction, user):
 
 	if str(reaction.emoji) == "<:Gulag:815302593348632626>":
 		message = reaction.message
+		print(f'Got vote for {message.author.nick}')
 		gulags = 0
 		for r in message.reactions:
 			if str(reaction.emoji) == "<:Gulag:815302593348632626>":
