@@ -19,7 +19,7 @@ def index():
         conn.close()
         return data
     except Exception as e:
-        print(e)
+        print(f'Error: {e}')
         return "failed"
 
 if __name__ == '__main__':
