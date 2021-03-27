@@ -14,8 +14,11 @@ def index():
         cur = conn.cursor()
         cur.execute("SELECT * FROM emotes")
         data = {}
-        for row in cur.fetchall():
-            data[row[1]] = row[2]
+        try:
+            for row in cur.fetchall():
+                data[row[1]] = row[2]
+        except IndexError:
+            print(f'Index error on row: {row}')
         conn.close()
         keys = sorted(data.keys(), key = lambda x : data[x], reverse = True)
         out = ''
