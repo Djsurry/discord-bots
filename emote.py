@@ -10,7 +10,7 @@ client = discord.Client()
 def insert(emote):
 	conn = sqlite3.connect('../db/emotes.db')
 	cur = conn.cursor()
-	cur.execute("INSERT INTO emotes (emote, uses) VALUES (%s, %s);", (emote, 1))
+	cur.execute("INSERT INTO emotes (emote, uses) VALUES (?, ?);", (emote, 1))
 	conn.commit()
 	cur.close()
 	conn.close()
@@ -18,9 +18,9 @@ def insert(emote):
 def add(emote):
 	conn = sqlite3.connect('../db/emotes.db')
 	cur = conn.cursor()
-	cur.execute("SELECT uses FROM emotes WHERE emote = %s;", (emote,))
+	cur.execute("SELECT uses FROM emotes WHERE emote = ?;", (emote,))
 	uses = cur.fetchone()[0]
-	cur.execute("UPDATE emotes SET uses = %s WHERE emote = %s;", (uses + 1, emote))
+	cur.execute("UPDATE emotes SET uses = ? WHERE emote = ?;", (uses + 1, emote))
 	conn.commit()
 	cur.close()
 	conn.close()
@@ -28,7 +28,7 @@ def add(emote):
 def exists(emote):
 	conn = sqlite3.connect('../db/emotes.db')
 	cur = conn.cursor()
-	cur.execute("SELECT * FROM emotes WHERE emote = %s;", (emote,))
+	cur.execute("SELECT * FROM emotes WHERE emote = ?;", (emote,))
 	if cur.fetchone() is None:
 		cur.close()
 		conn.close()
