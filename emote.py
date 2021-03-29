@@ -1,15 +1,14 @@
 import discord, time, datetime, re, asyncio
 import json
-import psycopg2
+import sqlite3, os
 
-TOKEN = 'ODE1MTM3Mzk5MTU1NzIwMTky.YDoB3A._IASkIm8_bBtt6FSe38oDCVYR0k'
-postgres = 'postgres://lkqrjjtnsmdaor:ed80e278bbaf164b2f53b7f2c9173c448313ca793b7c57ec1bb0a9ec2d53bbc6@ec2-54-205-183-19.compute-1.amazonaws.com:5432/dc3lcj8g41q7p2'
+TOKEN = os.environ['DISCORD_BOT']
 pattern = re.compile(r"(<:[^:]+:\d+>)")
 client = discord.Client()
 
 
 def insert(emote):
-	conn = psycopg2.connect(postgres, sslmode='require')
+	conn = sqlite3.connect('../db/emotes.db')
 	cur = conn.cursor()
 	cur.execute("INSERT INTO emotes (emote, uses) VALUES (%s, %s);", (emote, 1))
 	conn.commit()
@@ -17,7 +16,7 @@ def insert(emote):
 	conn.close()
 
 def add(emote):
-	conn = psycopg2.connect(postgres, sslmode='require')
+	conn = sqlite3.connect('../db/emotes.db')
 	cur = conn.cursor()
 	cur.execute("SELECT uses FROM emotes WHERE emote = %s;", (emote,))
 	uses = cur.fetchone()[0]
@@ -27,7 +26,7 @@ def add(emote):
 	conn.close()
 
 def exists(emote):
-	conn = psycopg2.connect(postgres, sslmode='require')
+	conn = sqlite3.connect('../db/emotes.db')
 	cur = conn.cursor()
 	cur.execute("SELECT * FROM emotes WHERE emote = %s;", (emote,))
 	if cur.fetchone() is None:
